@@ -3,7 +3,7 @@ from typing import TypeVar
 from .BaseActor import BaseActor
 from .BaseMenu import BaseMenu
 
-TBaseLandNode = TypeVar("TBaseLandNode", bound="BaseLandNode")
+#TBaseLandNode = TypeVar("TBaseLandNode", bound="BaseLandNode")
 
 class BaseLandNode (ABC):
     def __init__ (self, neighbor_north = None, neighbor_east = None, neighbor_south = None, neighbor_west = None):
@@ -21,7 +21,7 @@ class BaseLandNode (ABC):
         self.connect_neighbor_south(neighbor_south)
         self.connect_neighbor_west(neighbor_west)
 
-    def connect_neighbor_north (self, neighbor_north: TBaseLandNode):
+    def connect_neighbor_north (self, neighbor_north: "BaseLandNode"):
         if neighbor_north == self:
             raise Exception("You cannot connect a land node to itself.")
 
@@ -33,7 +33,7 @@ class BaseLandNode (ABC):
             raise Exception("Cannot overwrite a filled node. Node already has a neighbor to the north.")
 
 
-    def connect_neighbor_east (self, neighbor_east: TBaseLandNode):
+    def connect_neighbor_east (self, neighbor_east: "BaseLandNode"):
         if neighbor_east == self:
             raise Exception("You cannot connect a land node to itself.")
 
@@ -45,7 +45,7 @@ class BaseLandNode (ABC):
             raise Exception("Cannot overwrite a filled node. Node already has a neighbor to the east.")
 
 
-    def connect_neighbor_south (self, neighbor_south: TBaseLandNode):
+    def connect_neighbor_south (self, neighbor_south: "BaseLandNode"):
         if neighbor_south == self:
             raise Exception("You cannot connect a land node to itself.")
 
@@ -57,7 +57,7 @@ class BaseLandNode (ABC):
             raise Exception("Cannot overwrite a filled node. Node already has a neighbor to the east.")
 
 
-    def connect_neighbor_west (self, neighbor_west: TBaseLandNode):
+    def connect_neighbor_west (self, neighbor_west: "BaseLandNode"):
         if neighbor_west == self:
             raise Exception("You cannot connect a land node to itself.")
 
